@@ -52,6 +52,7 @@ return {
             eslint = {},
             tailwindcss = { filetypes = { 'html', 'twig', 'hbs' } },
             tsserver = {},
+            volar = { 'vue', 'typescript', 'javascript' },
             html = { filetypes = { 'html', 'twig', 'hbs' } },
             lua_ls = {
                 Lua = {
