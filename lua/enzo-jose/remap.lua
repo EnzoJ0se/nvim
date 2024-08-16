@@ -43,7 +43,7 @@ vim.keymap.set({ "i" }, "jj", "<ESC>")
 vim.keymap.set("n", "<leader>-", "<CMD>:Explore<CR>", { desc = "Execute [E]xplore command (NETRW)" })
 
 -- RESIZE WINDOWS
-vim.keymap.set("n", "<M-,>", "<c-w>5<")
-vim.keymap.set("n", "<M-.>", "<c-w>5>")
+vim.keymap.set("n", "<M-<>", "<c-w>5<")
+vim.keymap.set("n", "<M->>", "<c-w>5>")
 vim.keymap.set("n", "<M-t>", "<C-W>+")
 vim.keymap.set("n", "<M-s>", "<C-W>-")
