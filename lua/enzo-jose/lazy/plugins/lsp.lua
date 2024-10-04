@@ -51,7 +51,7 @@ return {
             jsonls = {},
             eslint = {},
             tailwindcss = { filetypes = { 'html', 'twig', 'hbs' } },
-            tsserver = {},
+            ts_ls = {},
             volar = { 'vue', 'typescript', 'javascript' },
             html = { filetypes = { 'html', 'twig', 'hbs' } },
             lua_ls = {
@@ -95,7 +95,7 @@ return {
         })
 
         -- TSSERVER
-        require('lspconfig').tsserver.setup {
+        require('lspconfig').ts_ls.setup {
             on_attach = on_attach,
             capabilities = capabilities,
             default_config = {
