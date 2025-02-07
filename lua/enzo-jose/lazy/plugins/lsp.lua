@@ -49,6 +49,7 @@ return {
             phpactor = {},
             -- intelephense = {},
             jsonls = {},
+            angularls = {},
             eslint = {},
             tailwindcss = { filetypes = { 'html', 'twig', 'hbs' } },
             ts_ls = {},
@@ -103,6 +104,19 @@ return {
                 filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
             }
         }
+
+        -- ANGULAR
+        --
+        -- DO NOT FORGET TO INSTALL ANGULAR LANGUAGE SERVER (@angular/language-server) VIW NPM
+        -- 
+        require('lspconfig').angularls.setup({
+            cmd = { "ngserver", "--stdio", "--tsProbeLocations", "/usr/local/lib/node_modules", "--ngProbeLocations", "/usr/local/lib/node_modules" },
+            on_attach = on_attach,
+            root_dir = require('lspconfig').util.root_pattern("angular.json", "project.json"),
+            default_config = {
+                filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }
+            }
+        })
 
         -- INTELEPHENSE
         -- require('lspconfig').intelephense.setup {
