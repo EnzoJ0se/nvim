@@ -3,6 +3,7 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = 'Open [G]it [S]tatus panel' })
         vim.keymap.set("n", "<leader>gb", "<Cmd>:Git blame<CR>", { desc = 'Execute [G]it [B]lame command' })
+        vim.keymap.set("n", "<leader>gB", "<Cmd>:GBrowse<CR>", { desc = 'Execute [G][B]browse command to open commit' })
         vim.keymap.set("n", "<leader>gp", "<Cmd>:Git pull<CR>", { desc = 'Execute [G]it [P]ull command' })
         vim.keymap.set("n", "<leader>gP", "<Cmd>:Git push<CR>", { desc = 'Execute [G]it [P]ush command' })
 
