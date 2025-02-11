@@ -45,5 +45,5 @@ vim.keymap.set("n", "<leader>-", "<CMD>:Explore<CR>", { desc = "Execute [E]xplor
 -- RESIZE WINDOWS
 vim.keymap.set("n", "<M-<>", "<c-w>5<")
 vim.keymap.set("n", "<M->>", "<c-w>5>")
-vim.keymap.set("n", "<M-t>", "<C-W>+")
-vim.keymap.set("n", "<M-s>", "<C-W>-")
+vim.keymap.set("n", "<M-9>", "<C-W>+")
+vim.keymap.set("n", "<M-0>", "<C-W>-")
