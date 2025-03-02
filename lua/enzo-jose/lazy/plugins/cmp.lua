@@ -27,13 +27,14 @@ return {
                     },
                     { "i", "c" }
                 ),
-                ["<CR>"] = cmp.mapping(
-                    cmp.mapping.confirm {
-                        behavior = cmp.ConfirmBehavior.Insert,
-                        select = true,
-                    },
-                    { "i", "c" }
-                ),
+                -- DISABLED ENTER TO TEST
+                -- ["<CR>"] = cmp.mapping(
+                --     cmp.mapping.confirm {
+                --         behavior = cmp.ConfirmBehavior.Insert,
+                --         select = true,
+                --     },
+                --     { "i", "c" }
+                -- ),
             },
             sources = {
                 { name = 'nvim_lsp' },
