@@ -47,3 +47,22 @@ vim.keymap.set("n", "<M-<>", "<c-w>5<")
 vim.keymap.set("n", "<M->>", "<c-w>5>")
 vim.keymap.set("n", "<M-9>", "<C-W>+")
 vim.keymap.set("n", "<M-0>", "<C-W>-")
+
+-- TMUX windownizer and sessionizer
+local runCMD = function(command)
+    vim.cmd("belowright 10split")
+    vim.cmd("terminal zsh -i -c '" .. command .. " && exit'")
+    vim.api.nvim_create_autocmd("TermClose", { pattern = "<buffer>", command = "bd!" })
+    vim.cmd("startinsert")
+end
+
+vim.keymap.set({ "n", "v", "i" }, "<leader>ow", function() runCMD('tmux-windownizer') end, {
+    noremap = true,
+    silent = true,
+    desc = "Open [O]pen TMUX [W]indowizer"
+})
+vim.keymap.set({ "n", "v", "i" }, "<leader>os", function() runCMD('tmux-sessionizer') end, {
+    noremap = true,
+    silent = true,
+    desc = "Open [O]pen TMUX [S]essionizer"
+})
