@@ -56,12 +56,12 @@ local runCMD = function(command)
     vim.cmd("startinsert")
 end
 
-vim.keymap.set({ "n", "v", "i" }, "<leader>ow", function() runCMD('tmux-windownizer') end, {
+vim.keymap.set("n", "<leader>ow", function() runCMD('tmux-windownizer') end, {
     noremap = true,
     silent = true,
     desc = "Open [O]pen TMUX [W]indowizer"
 })
-vim.keymap.set({ "n", "v", "i" }, "<leader>os", function() runCMD('tmux-sessionizer') end, {
+vim.keymap.set("n", "<leader>os", function() runCMD('tmux-sessionizer') end, {
     noremap = true,
     silent = true,
     desc = "Open [O]pen TMUX [S]essionizer"
