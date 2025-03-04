@@ -50,8 +50,7 @@ vim.keymap.set("n", "<M-0>", "<C-W>-")
 
 -- TMUX windownizer and sessionizer
 local runCMD = function(command)
-    vim.cmd("belowright 10split")
-    vim.cmd("terminal zsh -i -c '" .. command .. " && exit'")
+    vim.cmd("belowright 10split | terminal zsh -i -c '" .. command .. " && exit'")
     vim.api.nvim_create_autocmd("TermClose", { pattern = "<buffer>", command = "bd!" })
     vim.cmd("startinsert")
 end
