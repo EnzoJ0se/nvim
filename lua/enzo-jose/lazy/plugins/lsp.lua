@@ -46,15 +46,14 @@ return {
         end
 
         local servers = {
-            phpactor = {},
             -- intelephense = {},
-            jsonls = {},
-            angularls = {},
-            eslint = {},
-            tailwindcss = { filetypes = { 'html', 'twig', 'hbs' } },
+            -- volar = { 'vue', 'typescript', 'javascript' },
             ts_ls = {},
-            volar = { 'vue', 'typescript', 'javascript' },
+            jsonls = {},
+            eslint = {},
             html = { filetypes = { 'html', 'twig', 'hbs' } },
+            tailwindcss = { filetypes = { 'html', 'twig', 'hbs' } },
+            phpactor = {},
             lua_ls = {
                 Lua = {
                     workspace = { checkThirdParty = false },
@@ -105,26 +104,6 @@ return {
             }
         }
 
-        -- ANGULAR
-        --
-        -- DO NOT FORGET TO INSTALL ANGULAR LANGUAGE SERVER (@angular/language-server) VIW NPM
-        -- 
-        require('lspconfig').angularls.setup({
-            cmd = { "ngserver", "--stdio", "--tsProbeLocations", "/usr/local/lib/node_modules", "--ngProbeLocations", "/usr/local/lib/node_modules" },
-            on_attach = on_attach,
-            root_dir = require('lspconfig').util.root_pattern("angular.json", "project.json"),
-            default_config = {
-                filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }
-            }
-        })
-
-        -- INTELEPHENSE
-        -- require('lspconfig').intelephense.setup {
-        --     on_attach = on_attach,
-        --     capabilities = capabilities,
-        --     filetypes = { 'php' }
-        -- }
-
         -- PHPACTOR
         require('lspconfig').phpactor.setup {
             on_attach = on_attach,
@@ -141,5 +120,12 @@ return {
                 },
             }
         }
+
+        -- INTELEPHENSE
+        -- require('lspconfig').intelephense.setup {
+        --     on_attach = on_attach,
+        --     capabilities = capabilities,
+        --     filetypes = { 'php' }
+        -- }
     end
 }
