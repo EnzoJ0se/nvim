@@ -1,7 +1,7 @@
 local SetupEnv = {}
 
 local function load_env_file()
-    local env_file = vim.fn.getcwd() .. "/.env"
+    local env_file = vim.fn.expand("~/.config/nvim/.env")
     local file = io.open(env_file, "r")
 
     if file then
@@ -17,7 +17,6 @@ local function load_env_file()
 end
 
 function SetupEnv:setup(opts)
-    print("Setting up environment variables")
     load_env_file()
 end
 
