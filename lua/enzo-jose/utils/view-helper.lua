@@ -18,7 +18,7 @@ function ViewHelper:openFloatingWindow(opts)
     local col = math.floor((vim.o.columns - width) / 2)
 
     local win = vim.api.nvim_open_win(buf, true, {
-        relative = opts.relative ~= nil and opts.relative or 'win',
+        relative = opts.relative ~= nil and opts.relative or 'editor',
         width = opts.width ~= nil and opts.width or width,
         height = opts.height ~= nil and opts.height or height,
         row = opts.row ~= nil and opts.row or row,
