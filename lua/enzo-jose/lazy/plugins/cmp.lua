@@ -57,7 +57,7 @@ return {
 				end, { "i", "s" }),
 			},
 			sources = {
-				{ name = "lazydev", group_index = 0 },
+				{ name = "lazydev",                group_index = 0 },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" },
