@@ -45,6 +45,7 @@ vim.keymap.set("n", "<M->>", "<c-w>5>")
 vim.keymap.set("n", "<M-9>", "<C-W>+")
 vim.keymap.set("n", "<M-0>", "<C-W>-")
 
+--------------------------------------
 -- TMUX windownizer and sessionizer
 local runCMD = function(cmd)
     local width = math.floor(vim.o.columns * 0.65);
