@@ -1,25 +1,32 @@
 -- EDITOR CONFIG
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.have_nerd_font = true
 
 vim.o.hlsearch = false
 vim.wo.number = true
 vim.o.mouse = 'a'
-vim.o.clipboard = 'unnamedplus'
 vim.o.breakindent = true
-vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
-vim.o.updatetime = 50
-vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+vim.o.cursorline = true
+vim.opt.guicursor = "n-v-c-i:block"
+
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.splitright = true
 
+vim.opt.undofile = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4

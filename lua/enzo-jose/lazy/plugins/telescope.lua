@@ -1,5 +1,6 @@
 return {
     'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
         'nvim-lua/plenary.nvim',
@@ -8,12 +9,19 @@ return {
             build = 'make',
             cond = function() return vim.fn.executable 'make' == 1 end,
         },
+        { 'nvim-telescope/telescope-ui-select.nvim' },
+        { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
         -- cursor,  dropdown, ivy
         local dropdownTheme = 'ivy'
 
         require('telescope').setup {
+            extensions = {
+                ['ui-select'] = {
+                    require('telescope.themes').get_dropdown(),
+                },
+            },
             defaults = {
                 path_display = {
                     -- "smart"
@@ -99,7 +107,8 @@ return {
             },
         }
 
-        -- Enable telescope fzf native, if installed
+        -- Enable Telescope extensions if they are installed
+        pcall(require('telescope').load_extension, 'ui-select')
         pcall(require('telescope').load_extension, 'fzf')
 
         vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
