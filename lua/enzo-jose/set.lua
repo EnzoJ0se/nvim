@@ -18,7 +18,6 @@ vim.schedule(function()
 end)
 
 vim.o.cursorline = true
-vim.opt.guicursor = "n-v-c-i:block"
 
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
