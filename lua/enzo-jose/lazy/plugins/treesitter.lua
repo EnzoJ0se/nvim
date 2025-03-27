@@ -34,6 +34,7 @@ return { -- Highlight, edit, and navigate code
 	},
 	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
+		vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
 		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 		parser_config.blade = {
@@ -44,7 +45,6 @@ return { -- Highlight, edit, and navigate code
 			},
 			filetype = "blade",
 		}
-		vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
 		--------------------------------------
 		-- Diagnostic keymaps

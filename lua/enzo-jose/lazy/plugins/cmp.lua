@@ -30,8 +30,8 @@ return {
 			completion = { completeopt = "menu,menuone,noinsert" },
 			mapping = {
 				-- Scroll the documentation window [b]ack / [f]orward
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				-- ["<C-[>"] = cmp.mapping.scroll_docs(-4),
+				-- ["<C-]>"] = cmp.mapping.scroll_docs(4),
 
 				["<C-n>"] = cmp.mapping.select_next_item(),
 				["<C-p>"] = cmp.mapping.select_prev_item(),

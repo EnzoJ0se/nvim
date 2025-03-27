@@ -6,7 +6,7 @@ return {
 		{
 			"<leader>f",
 			function()
-				require("conform").format({ async = true, lsp_format = "prefer" })
+				require("conform").format({ async = true, lsp_format = 'fallback' })
 			end,
 			mode = "",
 			desc = "[F]ormat buffer",
@@ -16,8 +16,11 @@ return {
 		notify_on_error = false,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- You can use 'stop_after_first' to run the first available formatter from the list
-			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+			php = {'php-cs-fixer'},
+			javascript = { "eslint_d" },
+			typescript = { "eslint_d" },
+			typescriptreact = { "eslint_d" },
+			javascriptreact = { "eslint_d" },
 		},
 	},
 }

@@ -11,17 +11,17 @@ return {
             default = {
                 display = function(list_item)
                     -- Display only the file name
-                    return string.match(list_item.value, ".*/(.*)") or list_item.value
+                    -- return string.match(list_item.value, ".*/(.*)") or list_item.value
 
                     -- Truncate text by window size
-                    -- local fontSize = 1.2;
-                    -- local strLen = string.len(list_item.value)
-                    -- local paddingRadio = vim.api.nvim_list_uis()[1].width > 175 and 0.50 or 0.90
-                    -- local maxLen = math.floor((vim.api.nvim_list_uis()[1].width * paddingRadio) / fontSize)
-                    --
-                    -- return strLen > maxLen
-                    --     and '...' .. string.sub(list_item.value, strLen - maxLen, strLen)
-                    --     or list_item.value
+                    local fontSize = 1.2;
+                    local strLen = string.len(list_item.value)
+                    local paddingRadio = vim.api.nvim_list_uis()[1].width > 175 and 0.35 or 0.65
+                    local maxLen = math.floor((vim.api.nvim_list_uis()[1].width * paddingRadio) / fontSize)
+
+                    return strLen > maxLen
+                        and '...' .. string.sub(list_item.value, strLen - maxLen, strLen)
+                        or list_item.value
                 end
             }
         })
