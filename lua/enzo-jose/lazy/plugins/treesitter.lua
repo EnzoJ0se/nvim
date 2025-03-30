@@ -3,6 +3,7 @@ return { -- Highlight, edit, and navigate code
 	build = ":TSUpdate",
 	dependencies = {
 		"EmranMR/tree-sitter-blade",
+		"nvim-treesitter/nvim-treesitter-context",
 	},
 	main = "nvim-treesitter.configs",
 	opts = {
@@ -33,6 +34,7 @@ return { -- Highlight, edit, and navigate code
 		indent = { enable = true, disable = { "ruby" } },
 	},
 	config = function(_, opts)
+		require("treesitter-context").setup({ max_lines = 2, multiline_threshold = 1, })
 		require("nvim-treesitter.configs").setup(opts)
 		vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
