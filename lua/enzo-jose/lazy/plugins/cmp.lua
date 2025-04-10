@@ -9,7 +9,14 @@ return {
 				end
 				return "make install_jsregexp"
 			end)(),
-			dependencies = {},
+			dependencies = {
+				{
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+					end,
+				},
+			},
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
@@ -57,7 +64,7 @@ return {
 				end, { "i", "s" }),
 			},
 			sources = {
-				{ name = "lazydev",                group_index = 0 },
+				{ name = "lazydev", group_index = 0 },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" },
