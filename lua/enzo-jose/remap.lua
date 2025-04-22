@@ -46,8 +46,9 @@ vim.keymap.set("n", "<C-s>", "<Cmd>:wa<CR>")
 -- CLOSE TAG
 vim.keymap.set("n", "<leader>Ct", "<Cmd>:tabclose<CR>", { desc = "[T]ab [C]lose" })
 
--- REMOVE Q KEYMAP
+-- REMOVE KEYMAPS
 vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("i", "<C-u>", "<nop>")
 
 -- QUIT INSERT AND VISUAL MODE
 vim.keymap.set({ "i", "v" }, "<C-c>", "<ESC>")
