@@ -45,7 +45,14 @@ return {
                 end
 
                 local client = vim.lsp.get_client_by_id(event.data.client_id)
-                if client and client_supports_method( client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+                if
+                    client
+                    and client_supports_method(
+                        client,
+                        vim.lsp.protocol.Methods.textDocument_documentHighlight,
+                        event.buf
+                    )
+                then
                     local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
                     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                         buffer = event.buf,
@@ -68,7 +75,10 @@ return {
                     })
                 end
 
-                if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+                if
+                    client
+                    and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf)
+                then
                     map("<leader>th", function()
                         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
                     end, "[T]oggle Inlay [H]ints")
@@ -180,8 +190,13 @@ return {
 
         -- PHPACTOR
         require("lspconfig").phpactor.setup({
+            cmd = {
+                "php", "-d", "memory_limit=3G",
+                "/usr/local/bin/phpactor", "language-server"
+            },
             capabilities = capabilities,
             init_options = {
+                ["core.min_memory_limit"] = 5000000000,
                 ["language_server_phpstan.enabled"] = true,
                 ["language_server_php_cs_fixer.enabled"] = true,
                 ["language_server.diagnostics_on_update"] = false,

@@ -36,6 +36,8 @@ return {
         { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
     config = function()
+        local actions = require("telescope.actions")
+
         require("telescope").setup({
             defaults = {
                 layout_config = {
@@ -43,6 +45,16 @@ return {
                     preview_width = 0.5,
                 },
                 sorting_strategy = "ascending",
+                mappings = {
+                    i = {
+                        ["<C-y>"] = actions.select_default,
+                        ["<C-b>"] = false,
+                    },
+                    n = {
+                        ["<C-y>"] = actions.select_default,
+                        ["<C-b>"] = false,
+                    },
+                },
                 path_display = {
                     -- "smart"
                     -- "shorten"
@@ -92,7 +104,7 @@ return {
 
         vim.keymap.set("n", "<C-P>", function()
             if vim.fn.isdirectory(vim.loop.cwd() .. "/.git") == 1 then
-                builtin.git_files()
+                builtin.git_files({ show_untracked = true })
                 return
             end
 
