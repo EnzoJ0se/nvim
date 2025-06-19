@@ -200,12 +200,6 @@ return {
                 ["language_server_phpstan.enabled"] = true,
                 ["language_server_php_cs_fixer.enabled"] = true,
                 ["language_server.diagnostics_on_update"] = false,
-                ["indexer.exclude_patterns"] = {
-                    "/vendor/**/Tests/**/*",
-                    "/vendor/**/tests/**/*",
-                    "/var/cache/**/*",
-                    "/vendor/composer/**/*",
-                },
             },
         })
 

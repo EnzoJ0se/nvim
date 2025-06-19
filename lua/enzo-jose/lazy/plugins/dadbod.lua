@@ -9,6 +9,7 @@ return {
         vim.g.dbs = {
             { name = 'eloverde_env_dev',  url = "mysql://enzo:" .. vim.fn.getenv("MY_SQL_DB_PASSWORD") .. "@localhost:3306/eloverde_env_dev" },
             { name = 'eloverde_env_prod', url = "mysql://enzo:" .. vim.fn.getenv("MY_SQL_DB_PASSWORD") .. "@localhost:3306/eloverde_env_prod" },
+            { name = 'api_eloverde_integrations', url = "mysql://enzo:" .. vim.fn.getenv("MY_SQL_DB_PASSWORD") .. "@localhost:3306/api_eloverde_integrations" },
         }
 
         local view = require('enzo-jose.utils.view-helper');
