@@ -33,6 +33,10 @@ return {
     opts = {
         keymap = {
             preset = "default",
+            ["<Tab>"] = {},
+            ["<S-Tab>"] = {},
+            ["<C-H>"] = { function (cmp) cmp.snippet_backward() end },
+            ["<C-L>"] = { function (cmp) cmp.snippet_forward() end },
         },
         completion = {
             documentation = { auto_show = true, auto_show_delay_ms = 200 },
