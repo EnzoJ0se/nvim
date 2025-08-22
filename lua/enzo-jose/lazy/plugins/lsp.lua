@@ -200,7 +200,7 @@ return {
                 ["language_server_phpstan.enabled"] = true,
                 ["language_server_php_cs_fixer.enabled"] = true,
                 ["language_server.diagnostics_on_update"] = true,
-                ["language_server.diagnostic_sleep_time"] = 3000,
+                ["language_server.diagnostic_sleep_time"] = 1500,
             },
         })
 
