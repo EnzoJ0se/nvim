@@ -63,6 +63,10 @@ vim.keymap.set("n", "<M->>", "<c-w>5>")
 vim.keymap.set("n", "<M-9>", "<C-W>+")
 vim.keymap.set("n", "<M-0>", "<C-W>-")
 
+-- NAVIGATE HORIZONTALLY HALF WINDOW
+vim.keymap.set("n", "zh", "zH", { desc = "Scroll half screen left", noremap = true})
+vim.keymap.set("n", "zl", "zL", { desc = "Scroll half screen right", noremap = true })
+
 --------------------------------------
 -- TMUX windownizer and sessionizer
 local runCMD = function(cmd)
