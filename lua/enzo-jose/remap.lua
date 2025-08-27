@@ -71,9 +71,9 @@ vim.keymap.set("n", "zl", "zL", { desc = "Scroll half screen right", noremap = t
 
 --------------------------------------
 -- TMUX windownizer and sessionizer
-vim.keymap.set("n", "<leader>ow", "<CMD>ToggleFloatingTerminal tmux-windownizer<CR>", {
+vim.keymap.set("n", "<leader>ow", "<CMD>ToggleTermMedium tmux-windownizer<CR>", {
 	desc = "Open [O]pen TMUX [W]indowizer",
 })
-vim.keymap.set("n", "<leader>os", "<CMD>ToggleFloatingTerminal tmux-sessionizer<CR>", {
+vim.keymap.set("n", "<leader>os", "<CMD>ToggleTermMedium tmux-sessionizer<CR>", {
 	desc = "Open [O]pen TMUX [S]essionizer",
 })
