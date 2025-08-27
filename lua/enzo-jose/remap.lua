@@ -71,32 +71,9 @@ vim.keymap.set("n", "zl", "zL", { desc = "Scroll half screen right", noremap = t
 
 --------------------------------------
 -- TMUX windownizer and sessionizer
-local runCMD = function(cmd)
-	local width = math.floor(vim.o.columns * 0.65)
-	local height = math.floor(vim.o.lines * 0.5)
-	local row = math.floor((vim.o.lines - height) / 2)
-	local col = math.floor((vim.o.columns - width) / 2)
-
-	require("enzo-jose.utils.view-helper"):openFloatingWindow({
-		commands = "zsh -i -c '" .. cmd .. " && exit'",
-		width = width,
-		height = height,
-		row = row,
-		col = col,
-	})
-end
-
-vim.keymap.set("n", "<leader>ow", function()
-	runCMD("tmux-windownizer")
-end, {
-	noremap = true,
-	silent = true,
+vim.keymap.set("n", "<leader>ow", "<CMD>ToggleFloatingTerminal tmux-windownizer<CR>", {
 	desc = "Open [O]pen TMUX [W]indowizer",
 })
-vim.keymap.set("n", "<leader>os", function()
-	runCMD("tmux-sessionizer")
-end, {
-	noremap = true,
-	silent = true,
+vim.keymap.set("n", "<leader>os", "<CMD>ToggleFloatingTerminal tmux-sessionizer<CR>", {
 	desc = "Open [O]pen TMUX [S]essionizer",
 })

@@ -20,8 +20,6 @@ return {
         "kristijanhusak/vim-dadbod-ui",
     },
     config = function()
-        local view = require("enzo-jose.utils.view-helper")
-
         vim.g.dbs = buildDBS()
         vim.g.db_ui_win_position = "left"
         vim.g.db_ui_use_nerd_fonts = 1
