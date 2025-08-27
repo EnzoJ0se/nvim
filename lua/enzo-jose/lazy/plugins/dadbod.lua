@@ -7,7 +7,7 @@ local function buildDBS()
 
     for i = 2, #output do
         local schema = output[i]
-        table.insert(dbs, {name = schema, url = string.format("mysql://%s:%s@localhost:3306/%s", user, pass, schema)})
+        table.insert(dbs, { name = schema, url = string.format("mysql://%s:%s@localhost:3306/%s", user, pass, schema) })
     end
 
     return dbs
@@ -22,14 +22,14 @@ return {
     config = function()
         local view = require("enzo-jose.utils.view-helper")
 
-        vim.g.db_ui_use_nerd_fonts = 1
         vim.g.dbs = buildDBS()
+        vim.g.db_ui_win_position = "left"
+        vim.g.db_ui_use_nerd_fonts = 1
         vim.keymap.set("n", "<leader>db", "<Cmd>:DBUIToggle<CR>", { desc = "Open [DB] UI" })
-        vim.keymap.set(
-            "n",
-            "<leader>dB",
-            function() view:openFloatingWindow({ commands = "zsh -i -c 'nvim +DBUIToggle'" }) end,
-            {desc = "Open [DB] UI", noremap = true, silent = true}
-        )
+        vim.keymap.set("n", "<leader>dB", "<Cmd>:tabnew+DBUIToggle<CR>", {
+            desc = "Open [DB] UI",
+            noremap = true,
+            silent = true,
+        })
     end,
 }

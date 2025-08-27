@@ -43,8 +43,10 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set("n", "<leader>w", "<Cmd>:wa<CR>")
 vim.keymap.set("n", "<C-s>", "<Cmd>:wa<CR>")
 
--- CLOSE TAG
+-- TAB NAVIGATION
 vim.keymap.set("n", "<leader>Ct", "<Cmd>:tabclose<CR>", { desc = "[T]ab [C]lose" })
+vim.keymap.set("n", "<leader>Cn", "<Cmd>:tabn<CR>", { desc = "[T]ab [N]ext" })
+vim.keymap.set("n", "<leader>Cp", "<Cmd>:tabp<CR>", { desc = "[T]ab [P]revious" })
 
 -- REMOVE KEYMAPS
 vim.keymap.set("n", "Q", "<nop>")
