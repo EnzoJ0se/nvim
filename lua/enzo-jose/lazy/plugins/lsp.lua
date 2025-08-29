@@ -115,12 +115,21 @@ return {
 
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         local servers = {
-            ts_ls = {},
             jsonls = {},
-            eslint = {},
-            html = {},
             tailwindcss = { filetypes = { "html", "twig", "hbs" } },
-            phpactor = {},
+            html = {
+                capabilities = capabilities,
+                filetypes = { "html" },
+            },
+            eslint = {
+                pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+                on_attach = function(client, bufnr)
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        command = ":EslintFixAll",
+                    })
+                end,
+            },
             lua_ls = {
                 settings = {
                     Lua = {
@@ -128,6 +137,30 @@ return {
                             callSnippet = "Replace",
                         },
                     },
+                },
+            },
+            ts_ls = {
+                default_config = {
+                    cmd = { "typescript-language-server", "--stdio" },
+                    filetypes = {
+                        "javascript",
+                        "javascriptreact",
+                        "javascript.jsx",
+                        "typescript",
+                        "typescriptreact",
+                        "typescript.tsx",
+                    },
+                },
+            },
+            phpactor = {
+                cmd = { "php", "-d", "memory_limit=3G",  "language-server" },
+                capabilities = capabilities,
+                init_options = {
+                    ["core.min_memory_limit"] = 5000000000,
+                    ["language_server_phpstan.enabled"] = true,
+                    ["language_server_php_cs_fixer.enabled"] = true,
+                    ["language_server.diagnostics_on_update"] = true,
+                    ["language_server.diagnostic_sleep_time"] = 1500,
                 },
             },
         }
@@ -153,54 +186,6 @@ return {
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
                 end,
-            },
-        })
-
-        require("lspconfig").html.setup({
-            capabilities = capabilities,
-            filetypes = { "html" },
-        })
-
-        -- ESLINT
-        require("lspconfig").eslint.setup({
-            pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-            on_attach = function(client, bufnr)
-                vim.api.nvim_create_autocmd("BufWritePre", {
-                    buffer = bufnr,
-                    command = ":EslintFixAll",
-                })
-            end,
-        })
-
-        -- TSSERVER
-        require("lspconfig").ts_ls.setup({
-            capabilities = capabilities,
-            default_config = {
-                cmd = { "typescript-language-server", "--stdio" },
-                filetypes = {
-                    "javascript",
-                    "javascriptreact",
-                    "javascript.jsx",
-                    "typescript",
-                    "typescriptreact",
-                    "typescript.tsx",
-                },
-            },
-        })
-
-        -- PHPACTOR
-        require("lspconfig").phpactor.setup({
-            cmd = {
-                "php", "-d", "memory_limit=3G",
-                "/usr/local/bin/phpactor", "language-server"
-            },
-            capabilities = capabilities,
-            init_options = {
-                ["core.min_memory_limit"] = 5000000000,
-                ["language_server_phpstan.enabled"] = true,
-                ["language_server_php_cs_fixer.enabled"] = true,
-                ["language_server.diagnostics_on_update"] = true,
-                ["language_server.diagnostic_sleep_time"] = 1500,
             },
         })
 
