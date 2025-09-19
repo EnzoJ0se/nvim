@@ -122,13 +122,18 @@ return {
                 filetypes = { "html" },
             },
             eslint = {
-                pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
-                on_attach = function(client, bufnr)
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        command = ":EslintFixAll",
-                    })
-                end,
+                default_config = {
+                    cmd = { "vscode-eslint-language-server", "--stdio" },
+                    on_attach = function(client, bufnr)
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            buffer = bufnr,
+                            command = "EslintFixAll",
+                        })
+                    end,
+                    experimental = {
+                        useFlatConfig = true,
+                    },
+                },
             },
             lua_ls = {
                 settings = {
@@ -153,7 +158,7 @@ return {
                 },
             },
             phpactor = {
-                cmd = { "php", "-d", "memory_limit=3G",  "language-server" },
+                cmd = { "php", "-d", "memory_limit=3G", "language-server" },
                 capabilities = capabilities,
                 init_options = {
                     ["core.min_memory_limit"] = 5000000000,
