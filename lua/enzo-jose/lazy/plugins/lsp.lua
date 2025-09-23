@@ -124,12 +124,6 @@ return {
             eslint = {
                 default_config = {
                     cmd = { "vscode-eslint-language-server", "--stdio" },
-                    on_attach = function(client, bufnr)
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            buffer = bufnr,
-                            command = "EslintFixAll",
-                        })
-                    end,
                     experimental = {
                         useFlatConfig = true,
                     },
@@ -179,6 +173,12 @@ return {
             callback = function()
                 vim.bo.filetype = "html"
             end,
+        })
+
+        -- FIX LINT ON SAVE TS AND JS FILES
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = { "*.js", "*.ts" },
+            command = "LspEslintFixAll",
         })
 
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
