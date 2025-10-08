@@ -10,6 +10,9 @@ return {
         vim.keymap.set("n", "<leader>gH", "<Cmd>diffget //2<CR>", { desc = 'Execute ":diffget" to LEFT option' })
         vim.keymap.set("n", "<leader>gL", "<Cmd>diffget //3<CR>", { desc = 'Execute ":diffget" to RIGHT option' })
 
+        vim.keymap.set("x", "<leader>gH", ":'<,'>diffget //2<CR>", { desc = 'Execute ":diffget" LEFT on selection' })
+        vim.keymap.set("x", "<leader>gL", ":'<,'>diffget //3<CR>", { desc = 'Execute ":diffget" RIGHT on selection' })
+
         vim.keymap.set("n", "<leader>gt", ":Git push --set-upstream origin ", { desc = 'Start [G]it push with [T]racking' })
         vim.keymap.set("n", "<leader>gc", ":Git checkout ", { desc = 'Start [G]it [C]heckout command' })
         vim.keymap.set("n", "<leader>gC", ":Git checkout -b ", { desc = 'Start [G]it [C]heckout -b command' })

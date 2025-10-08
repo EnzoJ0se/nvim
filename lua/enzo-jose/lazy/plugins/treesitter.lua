@@ -21,6 +21,12 @@ return {
             "php",
             "bash",
             "dot",
+
+            "git_config",
+            "gitcommit",
+            "git_rebase",
+            "gitignore",
+            "gitattributes",
         },
         auto_install = true,
         highlight = {
