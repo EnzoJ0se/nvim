@@ -115,6 +115,7 @@ return {
 
         local capabilities = require("blink.cmp").get_lsp_capabilities()
         local servers = {
+            pylsp = {},
             jsonls = {},
             tailwindcss = { filetypes = { "html", "twig", "hbs" } },
             html = {
