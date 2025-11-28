@@ -177,9 +177,20 @@ return {
         })
 
         -- FIX LINT ON SAVE TS AND JS FILES
+        -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --     pattern = { "*.js", "*.ts" },
+        --     command = "LspEslintFixAll",
+        -- })
         vim.api.nvim_create_autocmd("BufWritePre", {
             pattern = { "*.js", "*.ts" },
-            command = "LspEslintFixAll",
+            callback = function()
+                for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })) do
+                    if client.name == "eslint" or client.name == "eslint_d" or client.name == "eslint-lsp" then
+                        vim.cmd("silent! LspEslintFixAll")
+                        return
+                    end
+                end
+            end,
         })
 
         require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
