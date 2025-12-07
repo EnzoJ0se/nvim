@@ -29,30 +29,30 @@ return {
     --         vim.cmd.colorscheme "dracula"
     --     end,
     -- },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-        config = function()
-            -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
-            vim.cmd.colorscheme "tokyonight"
-        end,
-    },
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     opts = {},
+    --     config = function()
+    --         -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
+    --         vim.cmd.colorscheme "tokyonight"
+    --     end,
+    -- },
     -- {
     --     'navarasu/onedark.nvim',
     --     priority = 1000,
     --     config = function() vim.cmd.colorscheme 'onedark' end,
     -- },
-    -- {
-    --     "oxfist/night-owl.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     config = function()
-    --         -- load the colorscheme here
-    --         vim.cmd.colorscheme "night-owl"
-    --     end,
-    -- },
+    {
+        "oxfist/night-owl.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- load the colorscheme here
+            vim.cmd.colorscheme "night-owl"
+        end,
+    },
     -- {
     --     'AlexvZyl/nordic.nvim',
     --     lazy = false,
