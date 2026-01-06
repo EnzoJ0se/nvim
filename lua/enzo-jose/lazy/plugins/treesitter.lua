@@ -1,5 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     opts = {
@@ -21,6 +22,7 @@ return {
             "php",
             "bash",
             "dot",
+            "blade",
 
             "git_config",
             "gitcommit",
@@ -36,23 +38,13 @@ return {
         indent = { enable = true, disable = { "ruby" } },
     },
     dependencies = {
-        "EmranMR/tree-sitter-blade",
         "nvim-treesitter/nvim-treesitter-context",
     },
     config = function(_, opts)
         require("treesitter-context").setup({ max_lines = 2, multiline_threshold = 1 })
         require("nvim-treesitter.configs").setup(opts)
-        vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
-        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-        parser_config.blade = {
-            install_info = {
-                url = "https://github.com/EmranMR/tree-sitter-blade",
-                files = { "src/parser.c" },
-                branch = "main",
-            },
-            filetype = "blade",
-        }
+        vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
         --------------------------------------
         -- Diagnostic keymaps

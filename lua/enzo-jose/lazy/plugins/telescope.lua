@@ -22,10 +22,9 @@ local ignorePaths = {
 return {
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
-    branch = "0.1.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
-        {
+        { -- If encountering errors, see telescope-fzf-native README for installation instructions
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
             cond = function()
@@ -39,7 +38,7 @@ return {
         local actions = require("telescope.actions")
 
         require("telescope").setup({
-            defaults = {
+ defaults = {
                 layout_config = {
                     prompt_position = "top",
                     preview_width = 0.5,
@@ -73,7 +72,7 @@ return {
                     unpack(ignorePaths),
                 },
                 extensions = {
-                    ["ui-select"] = { dropdown },
+                    ["ui-select"] = { require("telescope.themes").get_cursor() },
                 },
             },
             pickers = {
@@ -91,8 +90,10 @@ return {
         })
 
         -- Enable Telescope extensions if they are installed
-        pcall(require("telescope").load_extension, "ui-select")
         pcall(require("telescope").load_extension, "fzf")
+        pcall(require("telescope").load_extension, "ui-select")
+
+        -- See `:help telescope.builtin`
         local builtin = require("telescope.builtin")
 
         vim.keymap.set(
