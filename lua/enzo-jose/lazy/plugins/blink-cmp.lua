@@ -47,6 +47,7 @@ return {
                 sql = { "snippets", "dadbod", "buffer" },
                 mysql = { "snippets", "dadbod", "buffer" },
                 plsql = { "snippets", "dadbod", "buffer" },
+                codecompanion = { "codecompanion" },
             },
             providers = {
                 lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
