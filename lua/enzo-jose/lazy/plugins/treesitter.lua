@@ -1,10 +1,13 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    lazy = false,
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs",
-    opts = {
-        ensure_installed = {
+    branch = "main",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter-context",
+    },
+    config = function(_, opts)
+        local parsers = {
             "bash",
             "c",
             "diff",
@@ -21,30 +24,40 @@ return {
             "typescript",
             "php",
             "bash",
-            "dot",
             "blade",
-
+            "dot",
             "git_config",
             "gitcommit",
             "git_rebase",
             "gitignore",
             "gitattributes",
-        },
-        auto_install = true,
-        highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = { "ruby" },
-        },
-        indent = { enable = true, disable = { "ruby" } },
-    },
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-context",
-    },
-    config = function(_, opts)
-        require("treesitter-context").setup({ max_lines = 2, multiline_threshold = 1 })
-        require("nvim-treesitter.configs").setup(opts)
+        }
+        require("nvim-treesitter").install(parsers)
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function(args)
+                local buf, filetype = args.buf, args.match
+                local language = vim.treesitter.language.get_lang(filetype)
+                if not language then
+                    return
+                end
 
-        vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
+                -- check if parser exists and load it
+                if not vim.treesitter.language.add(language) then
+                    return
+                end
+                -- enables syntax highlighting and other treesitter features
+                vim.treesitter.start(buf, language)
+
+                -- enables treesitter based folds
+                -- for more info on folds see `:help folds`
+                -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+                -- vim.wo.foldmethod = 'expr'
+
+                -- enables treesitter based indentation
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
+        })
+        require("treesitter-context").setup({ max_lines = 2, multiline_threshold = 1 })
 
         --------------------------------------
         -- Diagnostic keymaps
@@ -54,8 +67,6 @@ return {
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
         -- TREESITTER CONTEXT
-        vim.keymap.set("n", "<leader>ct", function()
-            require("treesitter-context").go_to_context()
-        end, { silent = true })
+        vim.keymap.set("n", "<leader>ct", function() require("treesitter-context").go_to_context() end, { silent = true })
     end,
 }
