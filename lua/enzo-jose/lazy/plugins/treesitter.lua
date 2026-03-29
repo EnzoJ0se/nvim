@@ -6,7 +6,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-context",
     },
-    config = function(_, opts)
+    config = function()
         local parsers = {
             "bash",
             "c",
