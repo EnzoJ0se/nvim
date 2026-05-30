@@ -19,10 +19,6 @@ local ignorePaths = {
     "--glob=!**/storage/docs",
 }
 
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 do
     ---@type (string|vim.pack.Spec)[]
     local telescope_plugins = {

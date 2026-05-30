@@ -1,4 +1,6 @@
 -- EDITOR CONFIG
+vim.loader.enable()
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
@@ -33,11 +35,14 @@ vim.opt.scrolloff = 8
 vim.opt.wrap = false
 
 vim.opt.colorcolumn = "120"
+vim.o.showmode = false
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 --------------------
--- COPILOT
+-- COPILOT - removed
 --------------------
-vim.g.copilot_assume_mapped = true
+--[[ vim.g.copilot_assume_mapped = true ]]
 
 --------------------
 -- YANK HIGHLIGHT

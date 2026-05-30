@@ -1,7 +1,3 @@
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 local function buildDBS()
     local dbs = {}
     local user = vim.fn.getenv("MY_SQL_DB_USER")

@@ -1,9 +1,9 @@
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 do
-    vim.pack.add({ gh("tpope/vim-fugitive") })
+    vim.pack.add({
+        gh("tpope/vim-fugitive"),
+        gh("tpope/vim-rhubarb"),
+    })
+
     vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Open [G]it [S]tatus panel" })
     vim.keymap.set("n", "<leader>gb", "<Cmd>Git blame<CR>", { desc = "Execute [G]it [B]lame command" })
     vim.keymap.set("n", "<leader>gB", "<Cmd>GBrowse<CR>", { desc = "Execute [G][B]browse command to open commit" })

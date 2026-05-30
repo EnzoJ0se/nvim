@@ -1,7 +1,3 @@
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 do
     vim.pack.add({ gh "christoomey/vim-tmux-navigator" })
     vim.keymap.set("n", "<C-h>", "<Cmd>:TmuxNavigateLeft<CR>")

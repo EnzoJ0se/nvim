@@ -1,18 +1,12 @@
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 do
     vim.pack.add({ gh("folke/tokyonight.nvim") })
     require("tokyonight").setup({
-        styles = {
-            comments = { italic = false }, -- Disable italics in comments
-        },
+        styles = { comments = { italic = false } },
     })
 
+    -- tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
     vim.cmd.colorscheme("tokyonight-night")
 end
--- return {
 -- {
 --     "kaicataldo/material.vim",
 --     lazy = false,
@@ -73,4 +67,3 @@ end
 --     priority = 1000,
 --     config = function() vim.cmd.colorscheme 'nordic' end
 -- },
--- }

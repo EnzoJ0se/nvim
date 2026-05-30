@@ -1,14 +1,3 @@
-
----Because most plugins are hosted on GitHub, you can use the helper
----function to have less repetition in the following sections.
----@param repo string
----@return string
-local function gh(repo) return 'https://github.com/' .. repo end
-
--- ============================================================
--- SECTION 2: PLUGIN MANAGER INTRO
--- vim.pack intro, build hooks
--- ============================================================
 do
     -- [[ Intro to `vim.pack` ]]
     -- `vim.pack` is a new plugin manager built into Neovim,
@@ -78,11 +67,3 @@ do
         end,
     })
 end
-
-vim.pack.add({
-    gh "tpope/vim-rhubarb",
-    gh "tpope/vim-sleuth",
-    gh "nvim-lua/plenary.nvim",
-    gh "folke/which-key.nvim",
-    gh "lukas-reineke/indent-blankline.nvim"
-})

@@ -1,9 +1,8 @@
-local function gh(repo)
-    return "https://github.com/" .. repo
-end
-
 do
-    vim.pack.add({ gh("olimorris/codecompanion.nvim") })
+    vim.pack.add({
+        gh("nvim-lua/plenary.nvim"),
+        gh("olimorris/codecompanion.nvim"),
+    })
 
     require("codecompanion").setup({
         interactions = {
